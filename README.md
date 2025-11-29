@@ -144,14 +144,18 @@ function showLoading(prompt, model) {
 
 ## 📸 Screenshots
 
+<div align="center">
+
 ### Discord Integration
-![Discord Command](https://github.com/hyperdargo/Image-Generate/blob/main/images/Screenshot%202025-11-29%20171633.png?raw=true)
+<img src="https://github.com/hyperdargo/Image-Generate/blob/main/images/Screenshot%202025-11-29%20171633.png?raw=true" width="600" alt="Discord Command">
 
 ### Web Interface
-![Web Dashboard](https://github.com/hyperdargo/Image-Generate/blob/main/images/Screenshot%202025-11-29%20171731.png?raw=true)
+<img src="https://github.com/hyperdargo/Image-Generate/blob/main/images/Screenshot%202025-11-29%20171731.png?raw=true" width="600" alt="Web Dashboard">
 
-### Mobile Responsive
-![Mobile View](https://github.com/hyperdargo/Image-Generate/blob/main/images/Screenshot_20251129-171929.jpg?raw=true)
+### Mobile Responsive  
+<img src="https://github.com/hyperdargo/Image-Generate/blob/main/images/Screenshot_20251129-171929.jpg?raw=true" width="300" alt="Mobile View">
+
+</div>
 
 ## 🛠️ Deployment
 
