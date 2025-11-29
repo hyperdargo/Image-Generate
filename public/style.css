@@ -1,0 +1,569 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo i {
+    font-size: 2.5rem;
+    color: #ffd700;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #ffd700, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.invite-btn {
+    background: linear-gradient(135deg, #5865f2, #4752c4);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.invite-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+}
+
+.bot-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff4757;
+    animation: pulse 2s infinite;
+}
+
+.status-dot.online {
+    background: #2ed573;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Main Content */
+.main-content {
+    display: grid;
+    gap: 30px;
+}
+
+/* Generator Card */
+.generator-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.generator-card h2 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.generator-card h2 i {
+    color: #ffd700;
+    margin-right: 10px;
+}
+
+.generator-card > p {
+    color: #b0b0b0;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.discord-links {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(88, 101, 242, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(88, 101, 242, 0.3);
+}
+
+.discord-links p {
+    color: #b0b0b0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.discord-links a {
+    color: #5865f2;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.discord-links a:hover {
+    text-decoration: underline;
+}
+
+/* Forms */
+.generate-form {
+    display: grid;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group label i {
+    color: #ffd700;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+textarea, select, input {
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+textarea::placeholder {
+    color: #b0b0b0;
+}
+
+textarea:focus, select:focus, input:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.char-count {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin-top: 5px;
+}
+
+/* Buttons */
+.generate-btn {
+    background: linear-gradient(135deg, #ffd700, #ff6b6b);
+    color: #1a1a2e;
+    border: none;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+}
+
+.generate-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Discord Embed Styles */
+.discord-embed {
+    background: #2f3136;
+    border-radius: 8px;
+    border-left: 4px solid;
+    overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.discord-embed.generating {
+    border-left-color: #0099FF;
+}
+
+.discord-embed.result {
+    border-left-color: #00FF00;
+}
+
+.discord-embed.error {
+    border-left-color: #FF0000;
+}
+
+.embed-header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    padding-bottom: 8px;
+}
+
+.embed-color {
+    width: 4px;
+    height: 20px;
+    border-radius: 2px;
+    margin-right: 12px;
+}
+
+.embed-title {
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.embed-description {
+    padding: 0 16px 12px 16px;
+    color: #dcddde;
+    font-size: 14px;
+}
+
+.embed-description code {
+    background: #2b2d31;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: 'Consolas', monospace;
+    color: #dcddde;
+    display: block;
+    margin-top: 4px;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.embed-fields {
+    padding: 0 16px 12px 16px;
+    display: grid;
+    gap: 8px;
+}
+
+.embed-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.embed-field.inline {
+    display: inline-block;
+    width: auto;
+    margin-right: 12px;
+}
+
+.field-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.field-value {
+    color: #dcddde;
+    font-size: 14px;
+}
+
+.embed-image {
+    padding: 0 16px 16px 16px;
+}
+
+.embed-image img {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 8px;
+}
+
+.embed-footer {
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #72767d;
+    font-size: 12px;
+}
+
+.footer-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn.primary {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
+.btn.secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn.discord {
+    background: #5865f2;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Recent Images */
+.recent-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recent-section h3 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.recent-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.recent-image-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recent-image-item:hover {
+    transform: translateY(-5px);
+    border-color: #ffd700;
+}
+
+.recent-image-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.recent-image-info {
+    padding: 15px;
+}
+
+.recent-image-info p {
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: #b0b0b0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer code {
+    background: rgba(255, 215, 0, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Consolas', monospace;
+    color: #ffd700;
+}
+
+.footer strong {
+    color: #ffd700;
+}
+
+/* Utility */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .header-right {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .recent-images-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .discord-embed {
+        margin: 0 10px;
+    }
+    
+    .discord-links p {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* Logo Styles */
+.logo-image {
+    height: 50px;
+    width: auto;
+    border-radius: 8px;
+}
+
+/* If you want a circular logo */
+.logo-image.circle {
+    border-radius: 50%;
+}
+
+/* If you want the logo to be smaller */
+.logo-image.small {
+    height: 40px;
+}
+
+/* If you want the logo to be larger */
+.logo-image.large {
+    height: 60px;
+}

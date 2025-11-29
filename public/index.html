@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTEmpire AI - Generate Amazing Images</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Theme Color for Mobile -->
+    <meta name="theme-color" content="#1a1a2e">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <img src="/favicon-32x32.png" alt="DTEmpire Logo" class="logo-image">
+                <h1>DTEmpire AI</h1>
+            </div>
+            <div class="header-right">
+                <a href="http://dsc.gg/dtempire" class="invite-btn" target="_blank">
+                    <i class="fab fa-discord"></i> Add Bot
+                </a>
+                <div class="bot-status" id="botStatus">
+                    <span class="status-dot"></span>
+                    <span>Connecting...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Generator Section -->
+            <section class="generator-section">
+                <div class="generator-card">
+                    <h2><i class="fas fa-magic"></i> DTEmpire AI Image Generator</h2>
+                    <p>Powered by DTEmpire • Create amazing AI images with simple text prompts</p>
+                    
+                    <form id="generateForm" class="generate-form">
+                        <div class="form-group">
+                            <label for="prompt"><i class="fas fa-pencil-alt"></i> Image Prompt</label>
+                            <textarea 
+                                id="prompt" 
+                                placeholder="Describe your image... e.g., 'a beautiful sunset over mountains with cherry blossoms'" 
+                                required
+                                maxlength="500"
+                            ></textarea>
+                            <div class="char-count"><span id="charCount">0</span>/500</div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="model"><i class="fas fa-cog"></i> AI Model</label>
+                                <select id="model">
+                                    <option value="flux">Flux (Recommended)</option>
+                                    <option value="turbo">Turbo (Fast)</option>
+                                    <option value="kontext">Kontext (Experimental)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="width"><i class="fas fa-arrows-alt-h"></i> Width</label>
+                                <input type="number" id="width" value="512" min="256" max="1024">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="height"><i class="fas fa-arrows-alt-v"></i> Height</label>
+                                <input type="number" id="height" value="512" min="256" max="1024">
+                            </div>
+                        </div>
+
+                        <button type="submit" id="generateBtn" class="generate-btn">
+                            <i class="fas fa-sparkles"></i> Generate Image
+                        </button>
+                    </form>
+
+                    <div class="discord-links">
+                        <p>
+                            <i class="fab fa-discord"></i> 
+                            Also available in Discord: 
+                            <a href="http://dsc.gg/dtempire" target="_blank">Add Bot</a> • 
+                            <a href="http://dsc.gg/dtempire-server" target="_blank">Join Server</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section">
+                <div id="loading" class="loading hidden">
+                    <div class="discord-embed generating">
+                        <div class="embed-header">
+                            <div class="embed-color" style="background-color: #0099FF;"></div>
+                            <div class="embed-title">
+                                <i class="fas fa-sync-alt fa-spin"></i> DTEmpire AI Image Generator
+                            </div>
+                        </div>
+                        <div class="embed-fields">
+                            <div class="embed-field">
+                                <div class="field-name">Prompt</div>
+                                <div class="field-value" id="loadingPrompt">Loading...</div>
+                            </div>
+                            <div class="embed-field inline">
+                                <div class="field-name">Model</div>
+                                <div class="field-value" id="loadingModel">Flux</div>
+                            </div>
+                            <div class="embed-field inline">
+                                <div class="field-name">Status</div>
+                                <div class="field-value">Generating...</div>
+                            </div>
+                        </div>
+                        <div class="embed-footer">
+                            <div class="footer-text">Made by DTEmpire • Generating your image... This may take a minute</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="result" class="result-card hidden">
+                    <div class="discord-embed result">
+                        <div class="embed-header">
+                            <div class="embed-color" style="background-color: #00FF00;"></div>
+                            <div class="embed-title">
+                                <i class="fas fa-image"></i> DTEmpire AI Image Generator
+                            </div>
+                        </div>
+                        <div class="embed-description">
+                            <strong>Prompt:</strong> <code id="resultPrompt"></code>
+                        </div>
+                        <div class="embed-fields">
+                            <div class="embed-field inline">
+                                <div class="field-name">Model</div>
+                                <div class="field-value" id="resultModel">Flux</div>
+                            </div>
+                            <div class="embed-field inline">
+                                <div class="field-name">Status</div>
+                                <div class="field-value">Completed ✅</div>
+                            </div>
+                            <div class="embed-field inline">
+                                <div class="field-name">Time</div>
+                                <div class="field-value" id="resultTime">0ms</div>
+                            </div>
+                        </div>
+                        <div class="embed-image">
+                            <img id="generatedImage" src="" alt="Generated image">
+                        </div>
+                        <div class="embed-footer">
+                            <span class="footer-text">Made by DTEmpire • Generated via Web Panel • <span id="resultTimestamp"></span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="downloadBtn" class="btn secondary">
+                            <i class="fas fa-download"></i> Download Image
+                        </button>
+                        <button id="generateAgainBtn" class="btn primary">
+                            <i class="fas fa-redo"></i> Generate Another
+                        </button>
+                        <a href="http://dsc.gg/dtempire" class="btn discord" target="_blank">
+                            <i class="fab fa-discord"></i> Use in Discord
+                        </a>
+                    </div>
+                </div>
+
+                <div id="error" class="error-card hidden">
+                    <div class="discord-embed error">
+                        <div class="embed-header">
+                            <div class="embed-color" style="background-color: #FF0000;"></div>
+                            <div class="embed-title">
+                                <i class="fas fa-exclamation-triangle"></i> DTEmpire AI Image Generator
+                            </div>
+                        </div>
+                        <div class="embed-fields">
+                            <div class="embed-field">
+                                <div class="field-name">Prompt</div>
+                                <div class="field-value" id="errorPrompt">Error</div>
+                            </div>
+                            <div class="embed-field inline">
+                                <div class="field-name">Model</div>
+                                <div class="field-value" id="errorModel">Flux</div>
+                            </div>
+                            <div class="embed-field inline">
+                                <div class="field-name">Status</div>
+                                <div class="field-value">Failed ❌</div>
+                            </div>
+                        </div>
+                        <div class="embed-description">
+                            <strong>Error:</strong> <span id="errorMessage">Unknown error occurred</span>
+                        </div>
+                        <div class="embed-footer">
+                            <span class="footer-text">Made by DTEmpire • Try again with a different prompt</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Images Section -->
+            <section class="recent-section">
+                <h3><i class="fas fa-history"></i> Recently Generated Images</h3>
+                <div id="recentImages" class="recent-images-grid">
+                    <!-- Recent images will be loaded here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                <strong>Made by DTEmpire</strong> | 
+                <a href="http://dsc.gg/dtempire" target="_blank">Add Bot to Discord</a> • 
+                <a href="http://dsc.gg/dtempire-server" target="_blank">Join Our Server</a> |
+                Use <code>.imggen</code> in Discord
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
