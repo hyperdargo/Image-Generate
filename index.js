@@ -24,7 +24,7 @@ async function generateImage(prompt, model = 'flux', width = 512, height = 512) 
         };
 
         console.log(`Generating image with prompt: ${prompt}`);
-        const response = await axios.get('https://jmlite-tts-api.onrender.com/pollination', { 
+        const response = await axios.get('https://imggen-api.ankitgupta.com.np/api/pollination', { 
             params, 
             timeout: 120000 
         });
