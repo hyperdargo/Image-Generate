@@ -46,7 +46,7 @@ app.post('/generate-image', async (req, res) => {
         };
 
         console.log(`Web API: Generating image - ${prompt}`);
-        const response = await axios.get('https://jmlite-tts-api.onrender.com/pollination', { 
+        const response = await axios.get('https://imggen-api.ankitgupta.com.np/api/pollination', { 
             params, 
             timeout: 120000 
         });
@@ -179,7 +179,7 @@ discordClient.on('messageCreate', async (message) => {
             const startTime = Date.now();
             console.log(`📡 Calling image API for: "${args}"`);
             
-            const response = await axios.get('https://jmlite-tts-api.onrender.com/pollination', {
+            const response = await axios.get('https://imggen-api.ankitgupta.com.np/api/pollination', {
                 params: {
                     prompt: args,
                     model: 'flux',
